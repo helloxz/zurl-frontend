@@ -90,6 +90,10 @@ const init = () => {
   if (!userForm.value.username) {
     return ElMessage.error('用户名不能为空！');
   }
+  // 要求用户名必须是小写
+  if (!/^[a-z0-9]+$/.test(userForm.value.username)) {
+    return ElMessage.error('用户名只能包含小写字母或数字！');
+  }
 
   // 邮箱不能为空，且必须是正确的邮箱格式
   if (!userForm.value.email || !/\S+@\S+\.\S+/.test(userForm.value.email)) {

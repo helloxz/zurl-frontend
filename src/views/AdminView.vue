@@ -37,6 +37,11 @@
                             <span>数据迁移</span>
                         </el-menu-item>
 
+                        <el-menu-item @click="router.push('/admin/token')" index="token">
+                            <el-icon><Key /></el-icon>
+                            <span>API Token</span>
+                        </el-menu-item>
+
 
                         <el-menu-item @click="router.push('/admin/about')" index="about">
                             <el-icon><User /></el-icon>
@@ -139,13 +144,14 @@ import {
     Notebook,
     User,
     Message,
-    HomeFilled
+    Key
 } from '@element-plus/icons-vue'
 import { ref,onMounted,shallowRef } from 'vue'
 import { useRouter,useRoute } from 'vue-router'
 import list from '@/components/admin/list.vue';
 import settingCom from '@/components/admin/setting.vue';
 import about from '@/components/admin/about.vue';
+import token from '@/components/admin/token.vue';
 import migration from '@/components/admin/migration.vue';
 import { useSiteStore } from '@/stores/site';
 import md5 from 'md5';
@@ -179,6 +185,9 @@ const changeTab = ()=>{
             break
         case 'migration':
             currentTab.value = migration
+            break
+        case 'token':
+            currentTab.value = token
             break
         default:
             currentTab.value = list
